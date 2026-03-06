@@ -1,0 +1,54 @@
+/* Genel Karanlık Tema Ayarları */
+body { 
+    font-family: 'Consolas', monospace; 
+    background-color: #1e1e1e; 
+    color: #d4d4d4; 
+    padding: 20px; 
+    
+    /* DİKKAT: Arka plan resminin uzantısı neyse (.png veya .jpg) buraya onu yaz! */
+    background: #1e1e1e url("images/arkaplan.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container { 
+    max-width: 650px; 
+    margin: auto; 
+    /* Arka plan resmi arkadan hafifçe görünsün diye kutuyu saydam yaptık (0.9) */
+    background: rgba(37, 37, 38, 0.9); 
+    padding: 25px; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.8); 
+    border-left: 5px solid #007acc; 
+}
+
+h1 { 
+    color: #569cd6; 
+    text-align: center; 
+    border-bottom: 1px solid #333; 
+    padding-bottom: 10px; 
+}
+
+ul { 
+    list-style-type: none; 
+    padding: 0; 
+}
+
+li { 
+    background: rgba(45, 45, 48, 0.8); 
+    margin: 15px 0; 
+    padding: 15px; 
+    border-radius: 5px; 
+    border: 1px solid #3e3e42; 
+}
+
+a { 
+    text-decoration: none; 
+    color: #4ec9b0; 
+    font-size: 18px; 
+    font-weight: bold; 
+    display: block; 
+}
+
+a:hover { 
+    color: #ce9178; 
+}

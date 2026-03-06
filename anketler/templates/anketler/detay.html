@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ soru.soru_metni }}</title>
+    <link rel="stylesheet" href="{% static 'anketler/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'anketler:oy_ver' soru.id %}" method="post">
+            {% csrf_token %}
+            <fieldset style="border: none; padding: 0;">
+                <legend><h1>{{ soru.soru_metni }}</h1></legend>
+                
+                {% if hata_mesaji %}<p style="color: #f44336; font-weight: bold; background: #ffebee; padding: 10px; border-radius: 5px;">⚠️ {{ hata_mesaji }}</p>{% endif %}
+
+                {% for secenek in soru.secenek_set.all %}
+                    <label style="background: rgba(45, 45, 48, 0.8); margin: 10px 0; padding: 15px; border-radius: 5px; font-size: 18px; display: block; cursor: pointer; border: 1px solid #3e3e42;" for="secenek{{ forloop.counter }}">
+                        <input style="margin-right: 10px; transform: scale(1.2);" type="radio" name="secenek" id="secenek{{ forloop.counter }}" value="{{ secenek.id }}">
+                        {{ secenek.secenek_metni }}
+                    </label>
+                {% endfor %}
+            </fieldset>
+            <input style="background-color: #007acc; color: white; border: none; padding: 10px 20px; font-size: 18px; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; font-family: 'Consolas', monospace; font-weight: bold;" type="submit" value="🚀 OY GÖNDER">
+        </form>
+    </div>
+</body>
+</html>

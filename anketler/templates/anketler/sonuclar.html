@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Sonuçlar: {{ soru.soru_metni }}</title>
+    <link rel="stylesheet" href="{% static 'anketler/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 {{ soru.soru_metni }}</h1>
+        <ul>
+        {% for secenek in soru.secenek_set.all %}
+            <li style="display: flex; justify-content: space-between;">
+                <span>{{ secenek.secenek_metni }}</span>
+                <span style="color: #4ec9b0; font-weight: bold;">{{ secenek.oy_sayisi }} Oy</span>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'anketler:detay' soru.id %}" style="margin-top: 20px; display: inline-block;">↩ Tekrar Oy Ver?</a>
+        <a href="{% url 'anketler:index' %}" style="float: right; margin-top: 20px; display: inline-block;">🏠 Ana Sayfaya Dön</a>
+    </div>
+</body>
+</html>

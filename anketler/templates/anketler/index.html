@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Yazılım & Teknoloji Anketleri</title>
+    <link rel="stylesheet" href="{% static 'anketler/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>💻 Güncel Teknoloji Anketleri</h1>
+        {% if en_yeni_sorular %}
+            <ul>
+            {% for soru in en_yeni_sorular %}
+                <li><a href="{% url 'anketler:detay' soru.id %}">👉 {{ soru.soru_metni }}</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p style="color: #ce9178; text-align: center;">Sistemde henüz hiç anket yok.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
